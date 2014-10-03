@@ -20,12 +20,12 @@ And then execute:
 
 To begin using this gem, Initialize the library using a configuration block including your agile **API key**, **email**, and **domain**, like this:
 
-  ```ruby
-  AgileCRM.configure do |config|
-    config.api_key = 'XXXXXXXXXXX'
-    config.domain = 'my-agile-domain'
-    config.email = 'myemail@example.com'
-  end
+```ruby
+AgileCRM.configure do |config|
+  config.api_key = 'XXXXXXXXXXX'
+  config.domain = 'my-agile-domain'
+  config.email = 'myemail@example.com'
+end
 ```
 
 #### 1. Working with Contacts
