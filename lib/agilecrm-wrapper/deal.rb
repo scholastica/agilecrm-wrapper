@@ -3,7 +3,7 @@ require 'hashie'
 
 module AgileCRMWrapper
   class Deal < Hashie::Mash
-    DEFAULT_FIELDS = %w(name description expected_value pipeline_id mileston
+    DEFAULT_FIELDS = %w(name description expected_value pipeline_id milestone
       probability close_date owner_id prefs contacts contact_ids)
 
     class << self
