@@ -46,6 +46,14 @@ class FakeAgileCRM < Sinatra::Base
     status 204
   end
 
+  get '/dev/api/milestone/pipelines' do
+    json_response 200, 'tracks', 'list_tracks'
+  end
+
+  post '/dev/api/opportunity/email/:email' do
+    json_response 201, 'deals', 'create_deal'
+  end
+
   private
 
   def json_response(response_code, resource, file_name)

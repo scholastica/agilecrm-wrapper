@@ -1,0 +1,14 @@
+[
+  {
+    "id": "123",
+    "isDefault": "false",
+    "milestones": "Pending,Confirmed,Cancelled,Error,Done",
+    "name": "Default"
+  },
+  {
+    "id": "12375237542375487",
+    "isDefault": "false",
+    "milestones": "Pending,Confirmed,Cancelled,Error,Done",
+    "name": "Berlin"
+  }
+]

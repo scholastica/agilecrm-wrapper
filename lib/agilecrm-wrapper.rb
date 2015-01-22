@@ -7,6 +7,7 @@ require 'agilecrm-wrapper/contact'
 require 'agilecrm-wrapper/note'
 require 'agilecrm-wrapper/response/raise_error'
 require 'agilecrm-wrapper/track'
+require 'agilecrm-wrapper/deal'
 
 module AgileCRMWrapper
   class << self
