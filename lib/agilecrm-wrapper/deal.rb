@@ -57,29 +57,8 @@ module AgileCRMWrapper
 
   def update(options = {})
     payload = self.class.parse_deal_fields(options)
-    payload['custom_data'] = merge_properties(payload['custom_data'])
-    merge!(payload)
-    response = AgileCRMWrapper.connection.put('opportunity', self)
-    merge!(response.body)
+    response = AgileCRMWrapper.connection.put('opportunity', payload)
+    new(response.body)
   end
 
-  def get_property(property_name)
-    return unless respond_to?(:custom_data)
-    prop = custom_data.select { |a| a['name'] == property_name.to_s }
-    OpenStruct.new(*prop).value
-  end
-
-  private
-  
-  def merge_properties(new_properties)
-    properties.map do |h|
-      new_properties.delete_if do |h2|
-        if h['name'] == h2['name']
-          h['value'] = h2['value']
-          true
-        end
-      end
-      h
-    end + new_properties
-  end
 end

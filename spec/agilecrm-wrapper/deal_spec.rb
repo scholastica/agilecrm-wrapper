@@ -41,11 +41,9 @@ describe AgileCRMWrapper::Deal do
 
   describe '#update' do
     it 'updates the receiving deal with the supplied key-value pair(s)' do
-      expect do
-        deal.update(example_field: 'field', name: "example")
-      end.to change{
-        deal.get_property('example_field')
-      }.from("500 premium subscriptions").to('example')
+      result = deal.update(example_field: 'field', name: "example")
+      expect(result[:name]).to eq 'example'
+      expect(result[:example_field]).to eq 'field'
     end
   end
 end
