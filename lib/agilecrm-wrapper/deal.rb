@@ -32,9 +32,9 @@ module AgileCRMWrapper
         response = AgileCRMWrapper.connection.post("opportunity/email/#{contact_email}", payload)
         new(response.body)
       end
-      
+
       def update(options = {})
-        payload = self.class.parse_deal_fields(options)
+        payload = parse_deal_fields(options)
         response = AgileCRMWrapper.connection.put('opportunity', payload)
         new(response.body)
       end
