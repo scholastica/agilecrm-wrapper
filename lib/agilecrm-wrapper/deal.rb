@@ -57,9 +57,6 @@ module AgileCRMWrapper
       def default_field?(key)
         DEFAULT_FIELDS.include?(key.to_s)
       end
-
     end
   end
-
-
 end
