@@ -54,6 +54,18 @@ class FakeAgileCRM < Sinatra::Base
     json_response 201, 'deals', 'create_deal'
   end
 
+  get '/dev/api/opportunity' do
+    json_response 200, 'deals', 'list_deals'
+  end
+
+  get '/dev/api/opportunity/:id' do
+    json_response 200, 'deals', 'get_deal'
+  end
+
+  put '/dev/api/opportunity' do
+    json_response 200, 'deals', 'updated_deal'
+  end
+
   private
 
   def json_response(response_code, resource, file_name)
