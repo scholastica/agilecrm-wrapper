@@ -8,7 +8,7 @@ module AgileCRMWrapper
 
     class << self
       def all
-        response = AgileCRMWrapper.connection.get('contacts')
+        response = AgileCRMWrapper.connection.get('contacts?page_size=5000')
         if response.status == 200
           return response.body.map { |body| new body }
         else
