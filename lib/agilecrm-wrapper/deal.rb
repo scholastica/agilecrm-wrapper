@@ -20,7 +20,6 @@ module AgileCRMWrapper
         end
 
         return results
-
       end
 
       def call_agile_api(cursor = nil)
