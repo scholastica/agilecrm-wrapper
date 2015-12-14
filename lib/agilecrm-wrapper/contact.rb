@@ -8,7 +8,22 @@ module AgileCRMWrapper
 
     class << self
       def all
-        response = AgileCRMWrapper.connection.get('contacts?page_size=5000')
+        results = []
+        @cursor = nil
+
+        until @no_more_results do
+          response = call_agile_api(@cursor)
+          results.concat(response)
+          @cursor = response.last["cursor"]
+          @no_more_results = @cursor.nil?
+        end
+
+        return results
+      end
+
+      def call_agile_api(cursor = nil)
+        response = AgileCRMWrapper.connection.get("contacts?cursor=#{cursor}")
+
         if response.status == 200
           return response.body.map { |body| new body }
         else
