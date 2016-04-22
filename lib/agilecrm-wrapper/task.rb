@@ -1,6 +1,5 @@
 require 'agilecrm-wrapper/error'
 require 'hashie'
-require 'pry'
 
 module AgileCRMWrapper
   class Task < Hashie::Mash
