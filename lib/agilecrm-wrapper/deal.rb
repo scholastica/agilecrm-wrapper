@@ -10,13 +10,14 @@ module AgileCRMWrapper
 
       def all
         results = []
-        @cursor = nil
+        cursor = nil
+        no_more_results = false
 
-        until @no_more_results do
-          response = call_agile_api(@cursor)
+        until no_more_results do
+          response = call_agile_api(cursor)
           results.concat(response)
-          @cursor = response.last["cursor"]
-          @no_more_results = @cursor.nil?
+          cursor = response.last["cursor"]
+          no_more_results = cursor.nil?
         end
 
         return results
