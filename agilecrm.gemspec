@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday_middleware'
   spec.add_dependency 'hashie'
   spec.add_dependency 'json'
+  spec.add_dependency 'retriable'
 
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'bundler', '~> 1.6'
