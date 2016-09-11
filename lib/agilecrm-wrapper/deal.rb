@@ -8,6 +8,17 @@ module AgileCRMWrapper
 
     class << self
 
+      def each_batch(&block)
+        until @no_more_results do
+          Retriable.retriable tries: 3, base_interval: 3 do
+            @_response = call_agile_api(@cursor)
+          end
+            block.call(@_response)
+          @cursor = @_response.last["cursor"]
+          @no_more_results = @cursor.nil?
+        end
+      end
+
       def all
         results = []
         cursor = nil
