@@ -7,6 +7,15 @@ module AgileCRMWrapper
     CONTACT_FIELDS = %w(id type tags lead_score star_value)
 
     class << self
+      def all_in_batches(&block)
+        until @no_more_results do
+          response = call_agile_api(@cursor)
+          block.call(response)
+          @cursor = response.last["cursor"]
+          @no_more_results = @cursor.nil?
+        end
+      end
+
       def all
         results = []
         @cursor = nil
