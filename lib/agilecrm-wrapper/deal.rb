@@ -69,8 +69,6 @@ module AgileCRMWrapper
         response = AgileCRMWrapper.connection.get("contacts/#{contact_id}/deals")
         if response.status == 200
           response.body
-          # new(response.body)
-          # results.concat(response)
         elsif response.status == 204
           fail(AgileCRMWrapper::NotFound.new(response))
         end

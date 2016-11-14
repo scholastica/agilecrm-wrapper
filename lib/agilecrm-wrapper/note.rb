@@ -26,6 +26,16 @@ module AgileCRMWrapper
           'content-type' => 'application/x-www-form-urlencoded'
         )
       end
+
+      def find_notes_by_contact(contact_id)
+        response = AgileCRMWrapper.connection.get("contacts/#{contact_id}/notes")
+        if response.status == 200
+          response.body
+        elsif response.status == 204
+          fail(AgileCRMWrapper::NotFound.new(response))
+        end
+      end
+
     end
   end
 end
