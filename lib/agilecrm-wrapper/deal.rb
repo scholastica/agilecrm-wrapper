@@ -53,7 +53,6 @@ module AgileCRMWrapper
         end
       end
 
-
       def create_contact_deal(contact_email, options = {})
         payload = parse_deal_fields(options)
         response = AgileCRMWrapper.connection.post("opportunity/email/#{contact_email}", payload)
@@ -64,6 +63,15 @@ module AgileCRMWrapper
         payload = parse_deal_fields(options)
         response = AgileCRMWrapper.connection.put('opportunity', payload)
         new(response.body)
+      end
+
+      def find_by_contact(contact_id)
+        response = AgileCRMWrapper.connection.get("contacts/#{contact_id}/deals")
+        if response.status == 200
+          new(response.body)
+        elsif response.status == 204
+          fail(AgileCRMWrapper::NotFound.new(response))
+        end
       end
 
       private
