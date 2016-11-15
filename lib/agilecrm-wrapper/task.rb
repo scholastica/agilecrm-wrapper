@@ -14,6 +14,15 @@ module AgileCRMWrapper
         end
       end
 
+      def find_by_contact
+        response = AgileCRMWrapper.connection.get("tasks/based?owner=#{contact_id}&page_size=100")
+        if response.status == 200
+          response.body
+        elsif response.status == 204
+          fail(AgileCRMWrapper::NotFound.new(response))
+        end
+      end
+
     end
   end
 end
